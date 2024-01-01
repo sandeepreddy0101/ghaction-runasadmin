@@ -1,0 +1,11 @@
+name: 'Elevated Command (Windows)'
+description: 'Runs a command with elevated privileges on Windows'
+inputs:
+  command:
+    description: 'The command to run with elevated privileges'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.command }}
