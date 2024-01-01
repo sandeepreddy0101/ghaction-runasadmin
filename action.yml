@@ -5,7 +5,6 @@ inputs:
     description: 'The command to run with elevated privileges'
     required: true
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.command }}
+  using: 'powershell'
+  command: |
+    Start-Process -FilePath powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"$($env:INPUT_COMMAND)`"" -Verb RunAs
